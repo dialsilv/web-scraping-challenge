@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container" style='padding-left: 0px; padding-right: 0px'>
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+    </div>
+  </div>
+
+  <div class="container" style="background-image: linear-gradient(white, rgb(250, 250, 250))"" >
+    <div class="row">
+      <div class="col" style='padding-left: 15px; padding-right: 15px'>
+        <h2>Latest Mars News</h2>
+        <h4>{{ planet.news_title }}</h4>
+        <p>{{ planet.news_p }}</p>
+        <br>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 15px">
+      <div class="col-md-8">
+          <div class="box">
+            <h3>Featured Mars Image</h3>
+            <a href="{{ planet.image_url }}">
+              <img src="{{ planet.image_url }}" alt="featured_image_url" style='width: 100%'>
+            </a>
+          </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="box" style='border-style: solid; border-color: grey; border-width: 1px; padding-right: 10px; padding-left: 10px'>
+            <h4>Current Weather on Mars</h4>
+            <p>{{ planet.mars_weather }}</p>
+        </div>
+        <br>
+        <br>
+        <div class="box">
+            <h4>Mars Facts</h4>
+            {{ planet.table_facts_mars|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-left: 40px;padding-right: 40px">
+      <h2 style="text-align: center">Mars Hemispheres</h2>
+      <hr>
+
+      <div class="row" style="padding-left: 30px;padding-right: 30px">
+        <div class="col-md-6 col-sm-3"> 
+          <a href="{{ planet.hemisphere_image_urls[0]['img_url'] }}">
+              <img width=100% src="{{ planet.hemisphere_image_urls[0]['img_url'] }}" alt="{{ planet.hemisphere_image_urls[0]['title'] }}">
+          </a>
+          <h4>{{ planet.hemisphere_image_urls[0]['title'] }}</h4>
+        </div>
+        <div class="col-md-6 col-sm-3">
+          <a href="{{ planet.hemisphere_image_urls[1]['img_url'] }}">
+              <img width=100% src="{{ planet.hemisphere_image_urls[1]['img_url'] }}" alt="{{ planet.hemisphere_image_urls[1]['title'] }}">
+          </a>
+          <h4>{{ planet.hemisphere_image_urls[1]['title'] }}</h4>
+        </div>
+      </div>
+      <br>
+      <div class="row" style="padding-left: 30px;padding-right: 30px">
+        <div class="col-md-6 col-sm-3">
+          <a href="{{ planet.hemisphere_image_urls[2]['img_url'] }}">
+              <img width=100% src="{{ planet.hemisphere_image_urls[2]['img_url'] }}" alt="{{ planet.hemisphere_image_urls[2]['title'] }}">
+          </a>
+          <h4>{{ planet.hemisphere_image_urls[2]['title'] }}</h4>
+        </div>
+        <div class="col-md-6 col-sm-3">
+          <a href="{{ planet.hemisphere_image_urls[3]['img_url'] }}">
+              <img width=100% src="{{ planet.hemisphere_image_urls[3]['img_url'] }}" alt="{{ planet.hemisphere_image_urls[3]['title'] }}">
+          </a>
+          <h4>{{ planet.hemisphere_image_urls[3]['title'] }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
